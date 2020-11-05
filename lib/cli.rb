@@ -12,8 +12,8 @@ class Cli
         api = Api.new(query)
         api.create_articles
         Article.display_articles
-        input = gets.chomp
-        index = input_to_index(input)
+        index = self.secondary_input
+
         Article.display_article(index)
         self.another_article?
         # binding.pry
@@ -45,8 +45,9 @@ class Cli
         if !index.between?(0,4)
             puts "please select a number between 1 and 5"
             self.initial_input
+        else 
+            index
         end
-        index
     end
 
     def secondary_input
@@ -55,9 +56,9 @@ class Cli
         if !index.between?(0,9)
             puts "please select a number between 1 and 10"
             self.secondary_input
+        else 
+            index
         end
-        binding.pry
-        index
     end
 
     def self.topics
